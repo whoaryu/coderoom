@@ -1,0 +1,587 @@
+Pair Coding Platform – Product Specification
+Project Vision
+
+Build a modern, lightweight collaborative coding platform focused on pair programming, technical interviews, mentoring, and collaborative problem solving.
+
+Unlike a full IDE such as VS Code or Replit, this product should remain intentionally focused. The goal is to provide a distraction-free coding experience where two people can write code together while additional participants can observe.
+
+This project is primarily intended to be a strong portfolio/resume project demonstrating:
+
+Real-time collaboration
+WebSockets
+Collaborative editing
+Permission management
+Code execution
+Room management
+Modern frontend architecture
+Clean UI/UX
+
+Avoid feature bloat. Prioritize polish over quantity.
+
+Design Philosophy
+
+The UI should feel inspired by:
+
+VS Code
+LeetCode
+Google Docs
+Canva
+Linear
+
+Minimal.
+
+Modern.
+
+Fast.
+
+Dark-first.
+
+Rounded corners.
+
+Smooth animations.
+
+No unnecessary dashboards or clutter.
+
+Authentication
+
+No account creation.
+
+No login.
+
+Users simply choose how they want to start.
+
+Landing Page
+
+Two large options:
+
+1. Solo Coding
+Anonymous
+Opens an editor immediately
+No username required
+
+Perfect for practicing problems.
+
+2. Pair Coding
+
+Before entering:
+
+Ask only one field.
+
+Your Name
+
+______________
+
+This name will appear:
+
+beside the cursor
+in member list
+join notifications
+typing indicator
+
+No email.
+
+No authentication.
+
+Room Creation
+
+Host clicks
+
+Create Room
+
+Generate:
+
+Shareable URL
+
+Example
+
+codepair.app/room/ABCD
+
+Also display a short room code.
+
+Example
+
+4821
+
+Users should be able to join using either:
+
+Link
+4-digit code
+Room Permissions
+
+Host is always an editor.
+
+Maximum editors:
+
+2
+
+Everyone else joins as Viewer.
+
+Maximum viewers:
+
+10 (configurable)
+
+Viewers can:
+
+✅ Read code
+
+✅ Watch execution
+
+✅ View notes
+
+❌ Cannot edit
+
+Host can promote/demote participants between Editor and Viewer without recreating the room.
+
+Header
+
+The top navigation should contain:
+
+Logo
+
+Room Code
+
+Copy Invite Link button
+
+Language Selector
+
+Run button
+
+Stopwatch
+
+Theme toggle
+
+Participant avatars
+
+Participant Presence
+
+Similar to Google Docs or Canva.
+
+Display small circular avatars on the top-right.
+
+Example
+
+A B C D
+
+Hovering shows:
+
+Aryan
+Rahul
+Priya
+
+If more than 5 people:
+
+A B C +4
+
+Online users should have a green indicator.
+
+Leaving users disappear instantly.
+
+Stopwatch
+
+Instead of a countdown timer, include a stopwatch.
+
+Buttons:
+
+▶ Start
+
+⏸ Pause
+
+■ Reset
+
+Useful for interview sessions.
+
+Should remain synchronized for everyone in the room.
+
+Only the host controls it.
+
+Main Layout
+-------------------------------------------------------
+
+Header
+
+-------------------------------------------------------
+
+Editor
+
+-------------------------------------------------------
+
+Input
+
+-------------------------------------------------------
+
+Output Console
+
+-------------------------------------------------------
+
+Right Sidebar
+
+Members
+
+Notes
+
+-------------------------------------------------------
+Code Editor
+
+Use Monaco Editor.
+
+Supported languages:
+
+C++
+Java
+Python
+
+Features:
+
+Syntax highlighting
+Auto indentation
+Line numbers
+Bracket matching
+Multiple cursors
+Undo
+Redo
+Real-Time Collaboration
+
+This is the core feature.
+
+Changes should appear almost instantly.
+
+Include:
+
+Live typing
+
+Live cursors
+
+Cursor labels
+
+Selection highlights
+
+Remote cursor colors
+
+Typing latency should feel minimal.
+
+Cursor Indicators
+
+Each editor has:
+
+Unique color
+
+Name label
+
+Example:
+
+Aryan
+│
+│
+
+Exactly like Google Docs.
+
+When someone selects text, highlight it with their cursor color.
+
+Language Selection
+
+Dropdown.
+
+Python
+
+Java
+
+C++
+
+
+Changing language changes:
+
+syntax highlighting
+execution environment
+starter template
+Starter Templates
+
+Python
+
+def solve():
+    pass
+
+if __name__ == "__main__":
+    solve()
+
+Java
+
+public class Main {
+
+    public static void main(String[] args) {
+
+    }
+
+}
+
+C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+
+    return 0;
+}
+Code Execution
+
+Support:
+
+Run Code
+
+Input
+
+Output
+
+Execution Status
+
+Execution Errors
+
+Example
+
+Input
+
+5
+
+Output
+
+120
+Console
+
+Tabs
+
+Output
+
+Errors
+
+Should clearly distinguish:
+
+Compilation errors
+
+Runtime errors
+
+Timeouts
+
+Notes Panel
+
+Collapsible right sidebar.
+
+Simple text editor.
+
+Purpose:
+
+Algorithm ideas
+
+Complexities
+
+Edge cases
+
+TODOs
+
+Interviewer hints
+
+No markdown required initially.
+
+Autosave with room.
+
+Members Panel
+
+Shows:
+
+Avatar
+
+Name
+
+Role
+
+Examples
+
+Aryan
+Editor
+
+Rahul
+Editor
+
+Priya
+Viewer
+
+
+Host can:
+
+Promote
+
+Demote
+
+Remove participant
+
+Notifications
+
+Small toast notifications.
+
+Examples
+
+Aryan joined
+
+Rahul left
+
+Priya became Editor
+
+
+Disappear automatically.
+
+Theme
+
+Dark mode
+
+Light mode
+
+Persist locally.
+
+Auto Save
+
+For solo mode:
+
+Store editor content locally.
+
+Refreshing should recover the last session.
+
+For pair rooms:
+
+Persist room state while the room exists.
+
+Responsive Design
+
+Desktop-first.
+
+Mobile should display a message:
+
+Pair coding works best on larger screens.
+
+No need to support mobile editing.
+
+Future Features (Do NOT Build Now)
+
+Mention these in the README as future enhancements.
+
+Chat
+
+Small collapsible chat.
+
+Only text.
+
+Excalidraw
+
+Collaborative whiteboard.
+
+For explaining:
+
+Trees
+
+Graphs
+
+System Design
+
+DP
+
+Architecture
+
+Accessible from a new "Canvas" tab.
+
+Session Playback
+
+Record editor operations.
+
+Allow replay of the coding session.
+
+Like Git history.
+
+Very impressive technically.
+
+Code History
+
+Snapshots
+
+Restore previous versions.
+
+Multiple Files
+
+Not required initially.
+
+Single file only.
+
+Authentication
+
+Google Login
+
+GitHub Login
+
+Later.
+
+Voice Chat
+
+Not planned.
+
+Video Calling
+
+Not planned.
+
+The goal is to keep the platform focused on collaborative coding.
+
+Tech Stack
+
+Frontend
+
+React
+TypeScript
+Vite
+Tailwind CSS
+Monaco Editor
+Socket.IO Client
+
+Backend
+
+Node.js
+Express
+Socket.IO
+
+Code Execution
+
+Prefer Docker-based isolated containers for Python, Java, and C++ execution to showcase sandboxing and secure execution. If development speed is a priority, start with Judge0 and swap in Docker later.
+
+State Management
+
+Zustand (preferred)
+
+Deployment
+
+Frontend
+
+Vercel
+
+Backend
+
+Railway / Render
+Architecture
+                    Browser
+                       │
+       ┌───────────────┴───────────────┐
+       │                               │
+ React + Monaco                Socket.IO Client
+       │                               │
+       └───────────────┬───────────────┘
+                       │
+                 Express Server
+                       │
+              Room & Permission Manager
+                       │
+              Code Execution Service
+                       │
+          Docker Sandbox (Python/Java/C++)
+Non-Functional Requirements
+Real-time collaboration should feel instantaneous (<100 ms under normal conditions).
+Only two users may edit simultaneously; viewers are strictly read-only.
+Rooms should automatically expire after a period of inactivity (e.g., 1 hour).
+The UI should prioritize keyboard shortcuts and fast interactions.
+Keep the codebase modular and well-structured to make it a strong showcase during interviews.
+Goal
+
+The finished product should feel like a polished, focused collaboration tool rather than a feature-heavy IDE. A recruiter should immediately recognize that it demonstrates expertise in real-time systems, collaborative editing, WebSockets, permission management, and secure code execution, all while maintaining a clean, intuitive user experience.
