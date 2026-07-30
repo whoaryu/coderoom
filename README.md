@@ -24,7 +24,7 @@ graph TD
     Express -->|Executes Code| Runner[Execution Router]
     Runner -->|Option A: Fallback| LocalPython[Local Python Spawn]
     Runner -->|Option B: Local Dev| PistonDocker[Local Piston Docker Sandbox]
-    Runner -->|Option C: Production| Judge0Cloud[Judge0 Cloud via RapidAPI]
+    Runner -->|Option C: Production| WandboxCloud[Wandbox Cloud API Keyless]
 ```
 
 ---
@@ -54,9 +54,9 @@ When deploying this application live to the web, you should follow this deployme
    - Deploy the `frontend/` folder to **Vercel**. Vercel handles high traffic, serves the static assets with maximum efficiency, and automatically sets up HTTPS.
 2. **Backend (Render / Railway / Heroku)**:
    - Deploy the `backend/` folder to a persistent hosting platform (like **Railway** or **Render**). Because the platform relies on WebSockets (`socket.io`), it needs a containerized, persistent Node.js environment (not serverless functions).
-3. **Execution Sandbox (Judge0 Cloud / Dedicated Server)**:
-   - **Why we don't execute directly in production**: Running untrusted code compiled directly on your web host server is insecure and can expose system keys.
-   - **Production Setup**: Register for a free **Judge0** subscription on RapidAPI (which includes 50 free executions/day). Add your RapidAPI key as the `RAPIDAPI_KEY` environment variable in your Render/Railway backend configuration. The server will automatically route all execution securely to Judge0's cloud sandboxes.
+3. **Execution Sandbox (Wandbox Cloud / Dedicated Server)**:
+   - **Why we don't execute directly in production**: Running untrusted user-submitted code directly on your backend server is highly insecure.
+   - **Production Setup**: The backend includes built-in, out-of-the-box routing to **Wandbox**—a free, community-operated, and keyless online code compiler. This runs C++, Java, and Python securely in sandboxed cloud environments without requiring any API keys, signups, or configuration.
 
 ---
 
