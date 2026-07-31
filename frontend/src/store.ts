@@ -88,7 +88,7 @@ interface AppStore {
   executeCode: () => void;
 }
 
-const SOCKET_URL = 'http://localhost:5000'; // Target port for backend
+const SOCKET_URL = 'https://coderoom-7yzw.onrender.com'; // Target port for backend
 
 export const useAppStore = create<AppStore>((set, get) => ({
   socket: null,
