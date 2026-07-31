@@ -5,7 +5,7 @@ import { EditorWorkspace } from './components/EditorWorkspace';
 import { AlertCircle, Code2 } from 'lucide-react';
 
 function App() {
-  const { mode, setMode, setUsername, joinRoom, toasts, removeToast } = useAppStore();
+  const { mode, setUsername, joinRoom, toasts, removeToast } = useAppStore();
   const [initRoomId, setInitRoomId] = useState<string | null>(null);
   const [autoJoinName, setAutoJoinName] = useState('');
 
@@ -129,3 +129,14 @@ function App() {
 }
 
 export default App;
+
+
+// src/App.tsx(8,17): error TS6133: 'setMode' is declared but its value is never read.
+// src/components/EditorWorkspace.tsx(11,3): error TS6133: 'Settings' is declared but its value is never read.
+// src/components/EditorWorkspace.tsx(16,3): error TS6133: 'VolumeX' is declared but its value is never read.
+// src/components/EditorWorkspace.tsx(29,5): error TS6133: 'myColor' is declared but its value is never read.
+// src/components/EditorWorkspace.tsx(34,5): error TS6133: 'stopwatch' is declared but its value is never read.
+// src/components/EditorWorkspace.tsx(108,58): error TS6133: 'fullCode' is declared but its value is never read.
+// src/components/EditorWorkspace.tsx(340,31): error TS2322: Type 'boolean | null' is not assignable to type 'boolean'.
+//   Type 'null' is not assignable to type 'boolean'.
+// Error: Command "npm run build" exited with 2

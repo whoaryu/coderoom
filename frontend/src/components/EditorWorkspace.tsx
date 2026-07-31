@@ -8,12 +8,10 @@ import {
   Moon,
   Users,
   BookOpen,
-  Settings,
   LogOut,
   Terminal,
   AlertTriangle,
   FileCode,
-  VolumeX,
   UserX,
   ArrowUp,
   ArrowDown
@@ -26,12 +24,10 @@ export const EditorWorkspace: React.FC = () => {
     roomCode,
     hostId,
     role,
-    myColor,
     members,
     language,
     codeContent,
     notes,
-    stopwatch,
     input,
     output,
     errors,
@@ -105,7 +101,7 @@ export const EditorWorkspace: React.FC = () => {
     // Socket listeners for Monaco Editor
     if (mode === 'pair' && socket) {
       // 1. Receive Editor Updates
-      socket.on('code-changed', ({ changes, codeContent: fullCode }) => {
+      socket.on('code-changed', ({ changes }) => {
         if (isApplyingRemote.current) return;
         isApplyingRemote.current = true;
 
@@ -267,7 +263,7 @@ export const EditorWorkspace: React.FC = () => {
   }, [status]);
 
   // Member Management Helpers (Host controls)
-  const isHost = mode === 'solo' || (socket && socket.id === hostId);
+  const isHost = mode === 'solo' || (socket?.id === hostId);
 
   const handleUpdateRole = (targetSocketId: string, newRole: Role) => {
     if (socket) {
